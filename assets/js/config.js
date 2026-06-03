@@ -2,7 +2,7 @@ window.APP_CONFIG = {
   businessName: "Albertus Pharma",
   whatsappNumber: "919876543210",
   whatsappGreeting: "Hello Albertus Pharma,",
-  phoneDisplay: "+91 98765 43210",
+  phoneDisplay: "",
   email: "info@albertuspharma.com",
   address: "Albertus Pharma office, India",
   serviceArea: "India-wide pharmaceutical supply",
