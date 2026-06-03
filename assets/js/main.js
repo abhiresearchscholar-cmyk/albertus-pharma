@@ -1,4 +1,8 @@
 (function initGlobalUi() {
+  if (window.location.pathname === "/index.html") {
+    window.history.replaceState({}, "", `/${window.location.search}${window.location.hash}`);
+  }
+
   const config = window.APP_CONFIG || {};
   document.querySelectorAll("[data-business-name]").forEach((node) => {
     node.textContent = config.businessName || "Albertus Pharma";
@@ -30,7 +34,7 @@
   });
 
   document.querySelectorAll("[data-catalogue-link]").forEach((link) => {
-    link.href = config.catalogueUrl || "./assets/catalogue/albertus-pharma-catalogue.pdf";
+    link.href = config.catalogueUrl || "/assets/catalogue/albertus-pharma-catalogue.pdf";
   });
 
   const successMessage = document.querySelector("[data-form-success]");
@@ -67,12 +71,12 @@ function createProductCard(product) {
   article.className = "product-card";
   article.dataset.category = product.category;
   article.innerHTML = `
-    <a class="product-media" href="./product.html?id=${encodeURIComponent(product.id)}" aria-label="View ${escapeHtml(product.name)}">
+    <a class="product-media" href="/product/?id=${encodeURIComponent(product.id)}" aria-label="View ${escapeHtml(product.name)}">
       <img src="${escapeAttribute(product.imageUrl)}" alt="${escapeAttribute(product.name)}" loading="lazy">
     </a>
     <div class="product-card-body">
       <div class="eyebrow">${escapeHtml(product.category)}</div>
-      <h3><a href="./product.html?id=${encodeURIComponent(product.id)}">${escapeHtml(product.name)}</a></h3>
+      <h3><a href="/product/?id=${encodeURIComponent(product.id)}">${escapeHtml(product.name)}</a></h3>
       <p>${escapeHtml(product.description)}</p>
       <span class="availability">${escapeHtml(product.availability)}</span>
       <div class="button-row">
@@ -84,7 +88,7 @@ function createProductCard(product) {
 
   const img = article.querySelector("img");
   img.addEventListener("error", () => {
-    img.src = "./assets/img/hero-pharma-products.png";
+    img.src = "/assets/img/hero-pharma-products.png";
   });
   article.querySelectorAll("[data-product-quote]").forEach((link) => {
     link.addEventListener("click", () => trackInquiry("product_email", product.name));
@@ -132,7 +136,7 @@ async function renderCategoryHighlights() {
     const count = products.filter((product) => product.category === category).length;
     const link = document.createElement("a");
     link.className = "category-tile";
-    link.href = `./products.html?category=${encodeURIComponent(category)}`;
+    link.href = `/products/?category=${encodeURIComponent(category)}`;
     link.innerHTML = `<span>${escapeHtml(category)}</span><strong>${count} product${count === 1 ? "" : "s"}</strong>`;
     grid.appendChild(link);
   });

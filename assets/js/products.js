@@ -4,7 +4,7 @@ const FALLBACK_PRODUCTS = [
     name: "Paracetamol Tablets",
     category: "Analgesics & Antipyretics",
     description: "Quality oral analgesic and antipyretic tablets for retail, clinic, and institutional supply.",
-    imageUrl: "./assets/img/hero-pharma-products.png",
+    imageUrl: "/assets/img/hero-pharma-products.png",
     specifications: "Dosage form: Tablet | Segment: General medicine | Supply: Blister and bulk carton options | Use: Fever and mild pain support",
     availability: "Available on request",
     featured: true
@@ -14,7 +14,7 @@ const FALLBACK_PRODUCTS = [
     name: "Multivitamin Capsules",
     category: "Nutraceuticals",
     description: "Daily wellness capsules for pharmacies, clinics, and healthcare distribution partners.",
-    imageUrl: "./assets/img/hero-pharma-products.png",
+    imageUrl: "/assets/img/hero-pharma-products.png",
     specifications: "Dosage form: Capsule | Segment: Wellness | Packaging: Bottle and carton options | Use: Nutritional support",
     availability: "In stock",
     featured: true
@@ -24,7 +24,7 @@ const FALLBACK_PRODUCTS = [
     name: "Antacid Oral Suspension",
     category: "Gastrointestinal Care",
     description: "Oral suspension product for digestive health requirements and pharmacy supply.",
-    imageUrl: "./assets/img/hero-pharma-products.png",
+    imageUrl: "/assets/img/hero-pharma-products.png",
     specifications: "Dosage form: Oral suspension | Segment: Gastro care | Packaging: Bottle | Supply: Retail and institutional packs",
     availability: "Available on request",
     featured: true
@@ -34,7 +34,7 @@ const FALLBACK_PRODUCTS = [
     name: "Protein & Wellness Powder",
     category: "Nutraceuticals",
     description: "Wellness nutrition powder suitable for retail pharmacy and healthcare channel distribution.",
-    imageUrl: "./assets/img/hero-pharma-products.png",
+    imageUrl: "/assets/img/hero-pharma-products.png",
     specifications: "Dosage form: Powder | Segment: Wellness nutrition | Packaging: Jar or pouch options | Use: Protein and nutrition support",
     availability: "Bulk supply available",
     featured: true
@@ -44,7 +44,7 @@ const FALLBACK_PRODUCTS = [
     name: "Cough Relief Syrup",
     category: "Respiratory Care",
     description: "Respiratory care syrup for pharmacy channels and clinic requirements.",
-    imageUrl: "./assets/img/hero-pharma-products.png",
+    imageUrl: "/assets/img/hero-pharma-products.png",
     specifications: "Dosage form: Syrup | Segment: Respiratory care | Packaging: Bottle | Supply: Carton and distributor packs",
     availability: "Available on request",
     featured: false
@@ -54,7 +54,7 @@ const FALLBACK_PRODUCTS = [
     name: "Hand Sanitizer",
     category: "Personal Care & Hygiene",
     description: "Hygiene product for pharmacies, clinics, offices, hospitals, and institutional distribution.",
-    imageUrl: "./assets/img/hero-pharma-products.png",
+    imageUrl: "/assets/img/hero-pharma-products.png",
     specifications: "Form: Liquid or gel | Segment: Hygiene | Packaging: Multiple bottle sizes | Use: Hand hygiene support",
     availability: "In stock",
     featured: false
@@ -64,7 +64,7 @@ const FALLBACK_PRODUCTS = [
     name: "Hospital Disinfectant Solution",
     category: "Hospital Supply",
     description: "Disinfectant product for healthcare facilities, institutional housekeeping, and infection-control workflows.",
-    imageUrl: "./assets/img/hero-pharma-products.png",
+    imageUrl: "/assets/img/hero-pharma-products.png",
     specifications: "Form: Liquid solution | Segment: Hospital hygiene | Packaging: Bulk cans and bottles | Use: Surface disinfection support",
     availability: "Available on request",
     featured: false
@@ -74,7 +74,7 @@ const FALLBACK_PRODUCTS = [
     name: "Calcium & Vitamin D3 Tablets",
     category: "Bone & Joint Care",
     description: "Bone health formulation for pharmacy, clinic, and wellness channel requirements.",
-    imageUrl: "./assets/img/hero-pharma-products.png",
+    imageUrl: "/assets/img/hero-pharma-products.png",
     specifications: "Dosage form: Tablet | Segment: Bone health | Packaging: Blister options | Use: Calcium and vitamin D support",
     availability: "Bulk supply available",
     featured: false
@@ -84,7 +84,7 @@ const FALLBACK_PRODUCTS = [
     name: "First Aid & Wound Care Kit",
     category: "Hospital Supply",
     description: "Basic wound-care and first-aid supply kit for clinics, workplaces, pharmacies, and institutions.",
-    imageUrl: "./assets/img/hero-pharma-products.png",
+    imageUrl: "/assets/img/hero-pharma-products.png",
     specifications: "Type: Kit | Segment: First aid | Packaging: Box kit | Use: Wound-care and emergency support",
     availability: "In stock",
     featured: true
@@ -140,7 +140,7 @@ function normaliseHeader(value) {
 }
 
 function convertDriveImageUrl(url) {
-  if (!url) return "./assets/img/hero-pharma-products.png";
+  if (!url) return "/assets/img/hero-pharma-products.png";
   const match = url.match(/drive\.google\.com\/(?:file\/d\/|open\?id=)([^/&?]+)/);
   if (match && match[1]) return `https://drive.google.com/uc?export=view&id=${match[1]}`;
   return url;

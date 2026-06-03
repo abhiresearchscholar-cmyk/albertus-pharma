@@ -4,11 +4,11 @@ Professional static pharmaceutical products website for GitHub Pages.
 
 ## Structure
 
-- `index.html` - home page
-- `products.html` - dynamic product catalogue with search and filters
-- `product.html` - product details page using `?id=Product ID`
-- `categories.html` - category listing
-- `about.html`, `clients.html`, `contact.html`
+- `/` - home page
+- `/products/` - dynamic product catalogue with search and filters
+- `/product/?id=Product ID` - product details page
+- `/categories/` - category listing
+- `/about/`, `/clients/`, `/contact/`
 - `assets/css/styles.css` - responsive mobile-first styling
 - `assets/js/config.js` - business settings, email, Google Sheet, Analytics
 - `assets/js/products.js` - Google Sheets CSV loader and product utilities

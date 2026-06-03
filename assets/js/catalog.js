@@ -88,7 +88,7 @@ async function renderProductDetailsPage() {
       <span class="availability">${escapeHtml(product.availability)}</span>
       <div class="button-row">
         <a class="button button-primary" href="${productQuoteUrl(product)}" data-product-quote="${escapeAttribute(product.name)}">Email Enquiry</a>
-        <a class="button button-secondary" href="./products.html?category=${encodeURIComponent(product.category)}">View Category</a>
+        <a class="button button-secondary" href="/products/?category=${encodeURIComponent(product.category)}">View Category</a>
       </div>
       <div class="info-block">
         <h2>Specifications</h2>
@@ -102,7 +102,7 @@ async function renderProductDetailsPage() {
   `;
 
   detail.querySelector("img").addEventListener("error", (event) => {
-    event.target.src = "./assets/img/hero-pharma-products.png";
+    event.target.src = "/assets/img/hero-pharma-products.png";
   });
   detail.querySelectorAll("[data-product-quote]").forEach((link) => {
     link.addEventListener("click", () => trackInquiry("product_email", product.name));
@@ -130,7 +130,7 @@ async function renderCategoriesPage() {
     article.innerHTML = `
       <h2>${escapeHtml(category)}</h2>
       <p>${categoryProducts.length} product${categoryProducts.length === 1 ? "" : "s"} currently listed. Suitable for ${escapeHtml(productApplications(categoryProducts[0] || { category }).join(", ").toLowerCase())}.</p>
-      <a class="text-link" href="./products.html?category=${encodeURIComponent(category)}">Browse products</a>
+      <a class="text-link" href="/products/?category=${encodeURIComponent(category)}">Browse products</a>
     `;
     grid.appendChild(article);
   });

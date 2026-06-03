@@ -7,6 +7,6 @@ window.APP_CONFIG = {
   serviceArea: "India-wide pharmaceutical supply",
   sheetCsvUrl: "",
   googleAnalyticsId: "",
-  catalogueUrl: "./assets/catalogue/albertus-pharma-catalogue.pdf",
+  catalogueUrl: "/assets/catalogue/albertus-pharma-catalogue.pdf",
   mapEmbedUrl: "https://www.google.com/maps?q=Delhi%20NCR%20India&output=embed"
 };
