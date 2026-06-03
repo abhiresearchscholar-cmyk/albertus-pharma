@@ -33,6 +33,19 @@
     link.href = config.catalogueUrl || "./assets/catalogue/albertus-pharma-catalogue.pdf";
   });
 
+  const successMessage = document.querySelector("[data-form-success]");
+  if (successMessage && new URLSearchParams(window.location.search).get("submitted") === "true") {
+    successMessage.hidden = false;
+  }
+
+  const contactForm = document.querySelector("[data-contact-form]");
+  if (contactForm) {
+    contactForm.addEventListener("submit", () => {
+      const form = new FormData(contactForm);
+      trackInquiry("contact_form_submit", form.get("organization") || form.get("name") || "Contact form");
+    });
+  }
+
   if (config.googleAnalyticsId) injectAnalytics(config.googleAnalyticsId);
 })();
 

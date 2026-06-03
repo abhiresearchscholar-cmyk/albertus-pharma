@@ -47,12 +47,18 @@
         </div>
         <div class="contact-panel">
           <h2>Contact form</h2>
-          <form class="contact-form" data-contact-form>
+          <p class="form-status" data-form-success hidden>Thank you. Your enquiry has been sent to Albertus Pharma.</p>
+          <form class="contact-form" action="https://formsubmit.co/info@albertuspharma.com" method="POST" data-contact-form>
+            <input type="hidden" name="_subject" value="Product Enquiry for Albertus Pharma">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://www.albertuspharma.com/contact.html?submitted=true">
+            <input class="form-honey" type="text" name="_honey" tabindex="-1" autocomplete="off">
             <label class="field"><span>Name</span><input name="name" autocomplete="name" required></label>
             <label class="field"><span>Organization</span><input name="organization" autocomplete="organization"></label>
             <label class="field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
             <label class="field"><span>Requirement</span><textarea name="requirement" required placeholder="Product names, quantity, location, and expected delivery timeline"></textarea></label>
-            <button class="button button-primary" type="submit">Send via Email</button>
+            <button class="button button-primary" type="submit">Send Enquiry</button>
           </form>
         </div>
       </div>
@@ -70,15 +76,5 @@
   <script src="./assets/js/config.js"></script>
   <script src="./assets/js/products.js"></script>
   <script src="./assets/js/main.js"></script>
-  <script>
-    document.querySelector("[data-contact-form]").addEventListener("submit", (event) => {
-      event.preventDefault();
-      const form = new FormData(event.currentTarget);
-      const subject = "Product Enquiry for Albertus Pharma";
-      const body = `Hello Albertus Pharma,\n\nI would like to send an enquiry:\n\nName: ${form.get("name")}\nOrganization: ${form.get("organization") || "Not specified"}\nEmail: ${form.get("email")}\nRequirement: ${form.get("requirement")}\n\nPlease share pricing, availability, and delivery details.`;
-      trackInquiry("contact_form_email", form.get("organization") || form.get("name"));
-      window.location.href = `mailto:info@albertuspharma.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    });
-  </script>
 </body>
 </html>
