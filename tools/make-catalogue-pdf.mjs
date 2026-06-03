@@ -16,8 +16,8 @@ const lines = [
   { text: "Hospital Supply - disinfectants, first-aid support, and healthcare facility supply products.", size: 11 },
   { text: "Bone & Joint Care - calcium, vitamin, and wellness support formulations.", size: 11 },
   { text: "", size: 11 },
-  { text: "For current pricing, availability, and delivery details, request a quotation by WhatsApp.", size: 12 },
-  { text: "Phone: +91 98765 43210 | Email: info@albertuspharma.com | Service area: India-wide pharmaceutical supply", size: 11 }
+  { text: "For current pricing, availability, and delivery details, request a quotation by email.", size: 12 },
+  { text: "Email: info@albertuspharma.com | H.O: Ward No. 10, Ram Nagar, Hamirpur - 177001 | India-wide pharmaceutical supply", size: 11 }
 ];
 
 function esc(text) {

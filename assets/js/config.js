@@ -1,10 +1,9 @@
 window.APP_CONFIG = {
   businessName: "Albertus Pharma",
-  whatsappNumber: "919876543210",
-  whatsappGreeting: "Hello Albertus Pharma,",
+  emailGreeting: "Hello Albertus Pharma,",
   phoneDisplay: "",
   email: "info@albertuspharma.com",
-  address: "Albertus Pharma office, India",
+  address: "H.O: Ward No. 10, Ram Nagar, Hamirpur - 177001",
   serviceArea: "India-wide pharmaceutical supply",
   sheetCsvUrl: "",
   googleAnalyticsId: "",

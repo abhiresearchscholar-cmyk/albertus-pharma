@@ -23,10 +23,10 @@
     if (link.dataset.page === page) link.classList.add("is-active");
   });
 
-  document.querySelectorAll("[data-whatsapp-general]").forEach((link) => {
-    const message = `${config.whatsappGreeting || "Hello Albertus Pharma,"}\n\nI would like to know more about Albertus Pharma products and quotation support.`;
-    link.href = generalWhatsAppUrl(message);
-    link.addEventListener("click", () => trackInquiry("general_whatsapp", "General enquiry"));
+  document.querySelectorAll("[data-email-general]").forEach((link) => {
+    const message = `${config.emailGreeting || "Hello Albertus Pharma,"}\n\nI would like to know more about Albertus Pharma products and quotation support.`;
+    link.href = generalEmailUrl(message);
+    link.addEventListener("click", () => trackInquiry("general_email", "General enquiry"));
   });
 
   document.querySelectorAll("[data-catalogue-link]").forEach((link) => {
@@ -63,8 +63,8 @@ function createProductCard(product) {
       <p>${escapeHtml(product.description)}</p>
       <span class="availability">${escapeHtml(product.availability)}</span>
       <div class="button-row">
-        <a class="button button-primary" href="${productQuoteUrl(product)}" target="_blank" rel="noopener" data-product-quote="${escapeAttribute(product.name)}">Request Quote</a>
-        <a class="button button-ghost" href="${productQuoteUrl(product)}" target="_blank" rel="noopener" data-product-quote="${escapeAttribute(product.name)}">WhatsApp Enquiry</a>
+        <a class="button button-primary" href="${productQuoteUrl(product)}" data-product-quote="${escapeAttribute(product.name)}">Request Quote</a>
+        <a class="button button-ghost" href="${productQuoteUrl(product)}" data-product-quote="${escapeAttribute(product.name)}">Email Enquiry</a>
       </div>
     </div>
   `;
@@ -74,7 +74,7 @@ function createProductCard(product) {
     img.src = "./assets/img/hero-pharma-products.png";
   });
   article.querySelectorAll("[data-product-quote]").forEach((link) => {
-    link.addEventListener("click", () => trackInquiry("product_whatsapp", product.name));
+    link.addEventListener("click", () => trackInquiry("product_email", product.name));
   });
   return article;
 }

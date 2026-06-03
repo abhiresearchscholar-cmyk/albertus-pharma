@@ -87,7 +87,7 @@ async function renderProductDetailsPage() {
       <p class="lead">${escapeHtml(product.description)}</p>
       <span class="availability">${escapeHtml(product.availability)}</span>
       <div class="button-row">
-        <a class="button button-primary" href="${productQuoteUrl(product)}" target="_blank" rel="noopener" data-product-quote="${escapeAttribute(product.name)}">WhatsApp Enquiry</a>
+        <a class="button button-primary" href="${productQuoteUrl(product)}" data-product-quote="${escapeAttribute(product.name)}">Email Enquiry</a>
         <a class="button button-secondary" href="./products.html?category=${encodeURIComponent(product.category)}">View Category</a>
       </div>
       <div class="info-block">
@@ -105,7 +105,7 @@ async function renderProductDetailsPage() {
     event.target.src = "./assets/img/hero-pharma-products.png";
   });
   detail.querySelectorAll("[data-product-quote]").forEach((link) => {
-    link.addEventListener("click", () => trackInquiry("product_whatsapp", product.name));
+    link.addEventListener("click", () => trackInquiry("product_email", product.name));
   });
   injectProductSchema(product);
 

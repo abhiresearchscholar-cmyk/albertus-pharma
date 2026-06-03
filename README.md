@@ -10,7 +10,7 @@ Professional static pharmaceutical products website for GitHub Pages.
 - `categories.html` - category listing
 - `about.html`, `clients.html`, `contact.html`
 - `assets/css/styles.css` - responsive mobile-first styling
-- `assets/js/config.js` - business settings, WhatsApp, Google Sheet, Analytics
+- `assets/js/config.js` - business settings, email, Google Sheet, Analytics
 - `assets/js/products.js` - Google Sheets CSV loader and product utilities
 - `assets/js/catalog.js` - products, categories, and details rendering
 - `data/sample-products.csv` - sample Google Sheet columns
@@ -39,11 +39,15 @@ sheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/YOUR_PUBLISHED_ID/pub?out
 
 New rows appear automatically on the website when the public CSV updates. Product images can be direct Cloudinary URLs or public Google Drive share links.
 
-## WhatsApp
+## Email Enquiries
 
-Update `whatsappNumber` in `assets/js/config.js` with the business WhatsApp number in international format without `+`, spaces, or dashes.
+Product quote and contact form actions open an email draft addressed to:
 
-Every product quote button opens WhatsApp with:
+```text
+info@albertuspharma.com
+```
+
+Every product quote button opens an email with:
 
 ```text
 Hello Albertus Pharma,

@@ -200,15 +200,14 @@ async function getProducts() {
 
 function productQuoteUrl(product) {
   const config = window.APP_CONFIG || {};
-  const number = String(config.whatsappNumber || "").replace(/\D/g, "");
-  const message = `${config.whatsappGreeting || "Hello Albertus Pharma,"}\n\nI would like a quotation for:\n\nProduct Name: ${product.name}\n\nPlease share pricing, availability, and delivery details.`;
-  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+  const subject = `Quotation Request: ${product.name}`;
+  const body = `${config.emailGreeting || "Hello Albertus Pharma,"}\n\nI would like a quotation for:\n\nProduct Name: ${product.name}\n\nPlease share pricing, availability, and delivery details.`;
+  return `mailto:${config.email || "info@albertuspharma.com"}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
-function generalWhatsAppUrl(message) {
+function generalEmailUrl(message) {
   const config = window.APP_CONFIG || {};
-  const number = String(config.whatsappNumber || "").replace(/\D/g, "");
-  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+  return `mailto:${config.email || "info@albertuspharma.com"}?subject=${encodeURIComponent("Product Enquiry for Albertus Pharma")}&body=${encodeURIComponent(message)}`;
 }
 
 function productSpecs(product) {
