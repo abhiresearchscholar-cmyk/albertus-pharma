@@ -235,24 +235,6 @@ textarea {
   font-weight: 800;
 }
 
-.hero-logo-float {
-  position: absolute;
-  top: 38px;
-  right: -68px;
-  z-index: 1;
-  width: min(78vw, 310px);
-  pointer-events: none;
-  opacity: 0.34;
-  transform: rotate(-2deg);
-}
-
-.hero-logo-float img {
-  width: 100%;
-  filter:
-    drop-shadow(0 0 2px rgba(255, 255, 255, 0.86))
-    drop-shadow(0 20px 34px rgba(0, 0, 0, 0.28));
-}
-
 .trust-strip {
   width: var(--container);
   margin: -22px auto 0;
@@ -831,13 +813,6 @@ p {
     padding: 88px 0 78px;
   }
 
-  .hero-logo-float {
-    top: 50%;
-    right: -10px;
-    width: clamp(360px, 36vw, 520px);
-    opacity: 0.9;
-    transform: translateY(-50%) rotate(-1deg);
-  }
 }
 
 @media (max-width: 420px) {
