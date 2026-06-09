@@ -17,7 +17,9 @@ const lines = [
   { text: "Bone & Joint Care - calcium, vitamin, and wellness support formulations.", size: 11 },
   { text: "", size: 11 },
   { text: "For current pricing, availability, and delivery details, request a quotation by email.", size: 12 },
-  { text: "Email: info@albertuspharma.com | H.O: Ward No. 10, Ram Nagar, Hamirpur - 177001 | India-wide pharmaceutical supply", size: 11 }
+  { text: "Email: info@albertuspharma.com | Contact: 7018008582, 9418285897, 9805990300", size: 11 },
+  { text: "M.O.: #205, 2nd Floor, M-92/1, Choudhary Baldev Singh Complex, Munirka, New Delhi - 110067", size: 10 },
+  { text: "A.O.: #20F, SOHO, SBP City of Dreams, High Grounds, Zirakpur - 140603 | R.O.: Ward No. 10, Ram Nagar, Hamirpur (HP) - 177001", size: 10 }
 ];
 
 function esc(text) {
