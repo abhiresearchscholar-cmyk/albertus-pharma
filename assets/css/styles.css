@@ -458,6 +458,52 @@ p {
   gap: 14px;
 }
 
+.team-grid {
+  align-items: stretch;
+}
+
+.team-card {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.team-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(18, 100, 163, 0.34);
+  box-shadow: var(--shadow);
+}
+
+.team-role {
+  width: fit-content;
+  padding: 5px 9px;
+  border-radius: 999px;
+  color: var(--green-700);
+  background: var(--green-100);
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+
+.team-contact-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.team-contact-list a {
+  color: var(--blue-700);
+  font-weight: 800;
+  font-size: 0.92rem;
+  overflow-wrap: anywhere;
+}
+
+.team-contact-list a:hover {
+  color: var(--green-700);
+}
+
 .button-row {
   display: flex;
   flex-wrap: wrap;
