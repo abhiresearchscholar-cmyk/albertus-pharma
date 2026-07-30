@@ -458,6 +458,11 @@ p {
   gap: 14px;
 }
 
+.profile-copy .muted {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 .motto-card {
   width: fit-content;
   padding: 12px 14px;
