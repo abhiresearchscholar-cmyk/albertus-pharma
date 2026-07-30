@@ -194,7 +194,7 @@ async function renderCategoriesPage() {
         ${category.products.map((product) => `<span>${escapeHtml(product)}</span>`).join("")}
       </div>
       <div class="category-actions">
-        <a class="text-link" href="/products/?category=${encodeURIComponent(category.name)}">Browse category</a>
+        <a class="text-link" href="/products/?category=${encodeURIComponent(category.name)}">Browse products</a>
         <a class="text-link" href="${generalEmailUrl(enquiryMessage)}" data-category-enquiry="${escapeAttribute(category.name)}">Email enquiry</a>
       </div>
     `;
