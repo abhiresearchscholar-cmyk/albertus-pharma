@@ -117,22 +117,92 @@ async function renderProductDetailsPage() {
   }
 }
 
+const CATEGORY_CATALOG = [
+  {
+    name: "Analgesics and Antipyretics",
+    products: ["BROTYP-R", "D Patch 200"],
+    summary: "Pain, inflammation, fever, and recovery support products for pharmacy and clinical channels."
+  },
+  {
+    name: "Antibiotics",
+    products: ["ALMOXICTUS-625", "LINZZOL-600 Tablets"],
+    summary: "Antibacterial therapy products for prescription-led healthcare requirements."
+  },
+  {
+    name: "Bone and Joint Care",
+    products: ["CALBER-C2M Tablets", "Calber-D3 Nano Shot", "D Patch 200", "NERVTUS-NP"],
+    summary: "Bone strength, vitamin D support, neuropathy support, and musculoskeletal care."
+  },
+  {
+    name: "Gastrointestinal Care",
+    products: ["Prozntus", "Prozntus Sachets", "VONOTUS-20 Tablets"],
+    summary: "Digestive health and gut support products for gastrointestinal wellness."
+  },
+  {
+    name: "Gynae Care",
+    products: ["CALBER-C2M", "CALBER-C2M Tablets", "FERRTUS", "Mpatch", "OMEGATUS-E Capsules", "QNZYM-300"],
+    summary: "Women's health, pregnancy support, fertility, nutrition, and wellness products."
+  },
+  {
+    name: "NeuroCare",
+    products: ["NERVTUS-M Capsules", "NERVTUS-NP"],
+    summary: "Neuro-support products for neuropathy, nerve health, and related clinical needs."
+  },
+  {
+    name: "Nutraceuticals",
+    products: ["CALBER-C2M", "CURPITUS-P Capsules", "Calber-D3 Nano Shot", "Ferrtus Capsules", "NERVTUS-M Capsules", "NERVTUS-NP", "OMEGATUS-E Capsules", "Prozntus", "Prozntus Sachets", "QNZYM-300", "Urytus Sachets"],
+    summary: "Nutritional, antioxidant, probiotic, vitamin, mineral, and wellness formulations."
+  },
+  {
+    name: "Onco",
+    products: ["CURPITUS-P Capsules"],
+    summary: "Specialty wellness support products for focused healthcare needs."
+  },
+  {
+    name: "Pediatric Care",
+    products: ["Albertus-CZ Jnr", "Albertus-DB Syrup", "Albertus-LS Junior", "Ferrtus-Fe Drops"],
+    summary: "Child-focused cough, cold, respiratory, and nutritional support products."
+  },
+  {
+    name: "Respiratory Care",
+    products: ["Albertus-CZ Syrup", "Albertus-DB", "Albertus-LS Syrup", "LORTUS-AM"],
+    summary: "Cough, cold, allergy, expectorant, and respiratory care products."
+  },
+  {
+    name: "Urology",
+    products: ["Urytus Sachets", "Urytus Suspension"],
+    summary: "Urinary tract and urology support products in convenient dosage formats."
+  }
+];
+
 async function renderCategoriesPage() {
   const grid = document.querySelector("[data-categories-grid]");
   if (!grid) return;
 
-  const products = await getProducts();
   grid.innerHTML = "";
-  allCategories(products).forEach((category) => {
-    const categoryProducts = products.filter((product) => product.category === category);
+  CATEGORY_CATALOG.forEach((category) => {
     const article = document.createElement("article");
     article.className = "category-panel";
+    const enquiryMessage = `${window.APP_CONFIG?.emailGreeting || "Hello Albertus Pharma,"}\n\nI would like to know more about the ${category.name} range.\n\nProducts of interest:\n${category.products.map((product) => `- ${product}`).join("\n")}\n\nPlease share catalogue, availability, and supply details.`;
     article.innerHTML = `
-      <h2>${escapeHtml(category)}</h2>
-      <p>${categoryProducts.length} product${categoryProducts.length === 1 ? "" : "s"} currently listed. Suitable for ${escapeHtml(productApplications(categoryProducts[0] || { category }).join(", ").toLowerCase())}.</p>
-      <a class="text-link" href="/products/?category=${encodeURIComponent(category)}">Browse products</a>
+      <div class="category-panel-top">
+        <span>${category.products.length} product${category.products.length === 1 ? "" : "s"}</span>
+        <h2>${escapeHtml(category.name)}</h2>
+      </div>
+      <p>${escapeHtml(category.summary)}</p>
+      <div class="category-product-list">
+        ${category.products.map((product) => `<span>${escapeHtml(product)}</span>`).join("")}
+      </div>
+      <div class="category-actions">
+        <a class="text-link" href="/products/?category=${encodeURIComponent(category.name)}">Browse category</a>
+        <a class="text-link" href="${generalEmailUrl(enquiryMessage)}" data-category-enquiry="${escapeAttribute(category.name)}">Email enquiry</a>
+      </div>
     `;
     grid.appendChild(article);
+  });
+
+  grid.querySelectorAll("[data-category-enquiry]").forEach((link) => {
+    link.addEventListener("click", () => trackInquiry("category_email", link.dataset.categoryEnquiry));
   });
 }
 
