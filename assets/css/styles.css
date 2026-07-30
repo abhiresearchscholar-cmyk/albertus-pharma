@@ -458,6 +458,46 @@ p {
   gap: 14px;
 }
 
+.motto-card {
+  width: fit-content;
+  padding: 12px 14px;
+  border-left: 4px solid var(--green-700);
+  border-radius: var(--radius);
+  color: var(--blue-900);
+  background: linear-gradient(90deg, var(--green-100), #fff);
+  font-size: 1.02rem;
+  font-weight: 900;
+}
+
+.profile-closing {
+  color: var(--blue-900);
+  font-weight: 900;
+}
+
+.office-card {
+  display: grid;
+  gap: 14px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.office-list {
+  display: grid;
+  gap: 14px;
+}
+
+.office-list strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--blue-900);
+  font-size: 0.92rem;
+}
+
+.office-list p {
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+
 .team-grid {
   align-items: stretch;
 }
