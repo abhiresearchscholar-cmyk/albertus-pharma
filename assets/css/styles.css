@@ -503,6 +503,11 @@ p {
   font-size: 0.93rem;
 }
 
+.foundation-card .muted {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 .team-grid {
   align-items: stretch;
 }
