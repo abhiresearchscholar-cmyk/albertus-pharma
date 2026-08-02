@@ -80,7 +80,9 @@ async function renderProductDetailsPage() {
   detail.innerHTML = `
     <div class="detail-media">
       <img src="${escapeAttribute(product.imageUrl)}" alt="${escapeAttribute(product.name)}">
-      <button class="image-zoom-button image-zoom-button-detail" type="button" data-image-zoom data-image-src="${escapeAttribute(product.imageUrl)}" data-image-alt="${escapeAttribute(product.name)}">Zoom</button>
+      <button class="image-zoom-button image-zoom-button-detail" type="button" data-image-zoom data-image-src="${escapeAttribute(product.imageUrl)}" data-image-alt="${escapeAttribute(product.name)}" aria-label="View ${escapeAttribute(product.name)} image">
+        <span class="lens-icon" aria-hidden="true"></span>
+      </button>
     </div>
     <div class="detail-content">
       <div class="eyebrow">${escapeHtml(product.category)}</div>

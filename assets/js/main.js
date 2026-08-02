@@ -75,7 +75,9 @@ function createProductCard(product) {
       <a class="product-media-link" href="/product/?id=${encodeURIComponent(product.id)}" aria-label="View ${escapeHtml(product.name)} details">
         <img src="${escapeAttribute(product.imageUrl)}" alt="${escapeAttribute(product.name)}" loading="lazy">
       </a>
-      <button class="image-zoom-button" type="button" data-image-zoom data-image-src="${escapeAttribute(product.imageUrl)}" data-image-alt="${escapeAttribute(product.name)}">Zoom</button>
+      <button class="image-zoom-button" type="button" data-image-zoom data-image-src="${escapeAttribute(product.imageUrl)}" data-image-alt="${escapeAttribute(product.name)}" aria-label="View ${escapeAttribute(product.name)} image">
+        <span class="lens-icon" aria-hidden="true"></span>
+      </button>
     </div>
     <div class="product-card-body">
       <div class="eyebrow">${escapeHtml(product.category)}</div>
