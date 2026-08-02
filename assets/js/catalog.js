@@ -80,6 +80,7 @@ async function renderProductDetailsPage() {
   detail.innerHTML = `
     <div class="detail-media">
       <img src="${escapeAttribute(product.imageUrl)}" alt="${escapeAttribute(product.name)}">
+      <button class="image-zoom-button image-zoom-button-detail" type="button" data-image-zoom data-image-src="${escapeAttribute(product.imageUrl)}" data-image-alt="${escapeAttribute(product.name)}">Zoom</button>
     </div>
     <div class="detail-content">
       <div class="eyebrow">${escapeHtml(product.category)}</div>
@@ -103,6 +104,8 @@ async function renderProductDetailsPage() {
 
   detail.querySelector("img").addEventListener("error", (event) => {
     event.target.src = "/assets/img/hero-pharma-products.png";
+    const zoom = detail.querySelector("[data-image-zoom]");
+    if (zoom) zoom.dataset.imageSrc = event.target.src;
   });
   detail.querySelectorAll("[data-product-quote]").forEach((link) => {
     link.addEventListener("click", () => trackInquiry("product_email", product.name));

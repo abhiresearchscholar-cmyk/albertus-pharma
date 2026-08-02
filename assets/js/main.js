@@ -71,9 +71,12 @@ function createProductCard(product) {
   article.className = "product-card";
   article.dataset.category = product.category;
   article.innerHTML = `
-    <a class="product-media" href="/product/?id=${encodeURIComponent(product.id)}" aria-label="View ${escapeHtml(product.name)}">
-      <img src="${escapeAttribute(product.imageUrl)}" alt="${escapeAttribute(product.name)}" loading="lazy">
-    </a>
+    <div class="product-media">
+      <a class="product-media-link" href="/product/?id=${encodeURIComponent(product.id)}" aria-label="View ${escapeHtml(product.name)} details">
+        <img src="${escapeAttribute(product.imageUrl)}" alt="${escapeAttribute(product.name)}" loading="lazy">
+      </a>
+      <button class="image-zoom-button" type="button" data-image-zoom data-image-src="${escapeAttribute(product.imageUrl)}" data-image-alt="${escapeAttribute(product.name)}">Zoom</button>
+    </div>
     <div class="product-card-body">
       <div class="eyebrow">${escapeHtml(product.category)}</div>
       <h3><a href="/product/?id=${encodeURIComponent(product.id)}">${escapeHtml(product.name)}</a></h3>
@@ -89,12 +92,61 @@ function createProductCard(product) {
   const img = article.querySelector("img");
   img.addEventListener("error", () => {
     img.src = "/assets/img/hero-pharma-products.png";
+    const zoom = article.querySelector("[data-image-zoom]");
+    if (zoom) zoom.dataset.imageSrc = img.src;
   });
   article.querySelectorAll("[data-product-quote]").forEach((link) => {
     link.addEventListener("click", () => trackInquiry("product_email", product.name));
   });
   return article;
 }
+
+function openImageZoom(src, alt) {
+  let modal = document.querySelector("[data-image-modal]");
+  if (!modal) {
+    modal = document.createElement("div");
+    modal.className = "image-modal";
+    modal.setAttribute("data-image-modal", "");
+    modal.setAttribute("role", "dialog");
+    modal.setAttribute("aria-modal", "true");
+    modal.setAttribute("aria-label", "Product image preview");
+    modal.innerHTML = `
+      <button class="image-modal-close" type="button" data-image-modal-close aria-label="Close image preview">Close</button>
+      <div class="image-modal-frame">
+        <img src="" alt="">
+      </div>
+    `;
+    document.body.appendChild(modal);
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal || event.target.closest("[data-image-modal-close]")) closeImageZoom();
+    });
+  }
+
+  const img = modal.querySelector("img");
+  img.src = src;
+  img.alt = alt || "Product image";
+  modal.classList.add("is-open");
+  document.body.classList.add("has-image-modal");
+  modal.querySelector("[data-image-modal-close]").focus();
+}
+
+function closeImageZoom() {
+  const modal = document.querySelector("[data-image-modal]");
+  if (!modal) return;
+  modal.classList.remove("is-open");
+  document.body.classList.remove("has-image-modal");
+}
+
+document.addEventListener("click", (event) => {
+  const trigger = event.target.closest("[data-image-zoom]");
+  if (!trigger) return;
+  event.preventDefault();
+  openImageZoom(trigger.dataset.imageSrc, trigger.dataset.imageAlt);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeImageZoom();
+});
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (char) => ({
